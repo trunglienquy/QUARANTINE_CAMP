@@ -44,10 +44,16 @@
                 <i class='bx bx-heart'></i>
             </li>
             <li class="notification-and-admin">
-                <div class="bell-ring">
-                    <i class='bx bx-bell'>
-                        <div class="circle-notification">0</div>
-                    </i>
+                <div class="bell-ring-main">
+                    <div class="bell-ring">
+                        <i class='bx bx-bell'>
+                            <div class="circle-notification">0</div>
+                        </i>
+                    </div>
+                    <div class="main-notification">
+                        <p class="title-empty">Hiện đang không có thông báo nào</p>
+                        <p class="have-notification"></p>
+                    </div>
                 </div>
                 <div class="information-admin">
                     <div class="info-1">

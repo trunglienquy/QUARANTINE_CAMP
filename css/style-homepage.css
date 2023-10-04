@@ -78,7 +78,7 @@ li{
     height: 35px;
     width: 122px;
     top: 0;
-    left: 50px;
+    left: 60px;
     transform: translateY(-50%);
     border-radius: 6px;
     line-height: 35px;
@@ -116,7 +116,7 @@ li{
 .info-admin{
     height: 80px;
     width: 100%;
-    background-color: #f0efef;
+    background-color: #f0efef; 
 }
 .info-admin ul{
     display: flex;
@@ -176,7 +176,9 @@ li{
 }
 
 .bell-ring:hover{
-    animation: shake 1s forwards
+    position: relative;
+    animation: shake 1s forwards;
+    z-index: 100;
 }
 @keyframes shake{
     0%{
@@ -205,4 +207,23 @@ table {
 }
 .table-BN table .data-table:hover{
     background-color: #eeeeee;
+}
+.main-notification{
+    position: absolute;
+    width: 400px;
+    height: 800px;
+    right: 40px;
+    text-align: center;
+    padding: 20px 10px;
+    background-color: #f0efef;
+    transform: translateY(-50%);
+    transition: all .5s ease-out;
+    opacity: 0;
+    z-index: -1;
+}
+.active-notification{
+    transform: translateY(1%);
+    opacity: 1;
+    z-index: 90;
+
 }
