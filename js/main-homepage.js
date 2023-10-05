@@ -12,3 +12,12 @@ const mainbell = document.querySelector(".main-notification");
 bell.onclick = function(){
     mainbell.classList.toggle("active-notification");
 }
+
+const statusBN = document.querySelector(".status-BN")
+if (statusBN.innerText == "Nghiêm trọng"){
+    statusBN.style.color = "darkred";
+}
+
+function refreshPages(){
+    window.location.reload();
+}

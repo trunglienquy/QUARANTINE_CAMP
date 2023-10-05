@@ -68,18 +68,35 @@
         </ul>
     </div>
     <div class="home_content">
-        
-        <h1>Quản lý bệnh nhân</h1>
+        <div class="header-title">
+            <h1>Quản lý bệnh nhân</h1>
+            <i class='bx bx-refresh' onclick="refreshPages()"></i>
+        </div>
+        <div class="search-sort">
+            <div class="search-bar">
+                <i class='bx bx-search' ></i>
+                <input type="search" name="" id="" placeholder="Tìm kiếm....">
+            </div>
+            <div class="sort-bar">
+                <p>Lọc theo</p>
+                <select name="sortdata" id="sort-data">
+                    <option value="" disabled selected>Lọc theo...</option>
+                    <option value="status">Tình Trạng</option>
+                </select>
+            </div>
+        </div>
         <div class="table-BN">
             <table>
                 <tr>
-                    <th>id</th>
-                    <th>title1</th>
-                    <th>title2</th>
-                    <th>title3</th>
-                    <th>title4</th>
-                    <th>title5</th>
-                    <th>title6</th>
+                    <th>Mã BN</th>
+                    <th>Họ và Tên</th>
+                    <th>Số CMND</th>
+                    <th>Giới tính</th>
+                    <th>Địa chỉ</th>
+                    <th>Bệnh lý</th>
+                    <th>Triệu chứng</th>
+                    <th>Tình trạng</th>
+                    <th>Mã phòng</th>
                 </tr>
                 <tr class="data-table">
                     <td>data1</td>
@@ -89,6 +106,8 @@
                     <td>data1</td>
                     <td>data1</td>
                     <td>data1</td>
+                    <td>data1</td>
+                    <td>data1</td>
                 </tr>
                 <tr class="data-table">
                     <td>data2</td>
@@ -97,6 +116,8 @@
                     <td>data2</td>
                     <td>data2</td>
                     <td>data2</td>
+                    <td>data1</td>
+                    <td class="status-BN">Nghiêm trọng</td>
                     <td>data2</td>
                 </tr>
             </table>
