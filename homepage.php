@@ -68,6 +68,11 @@
         </ul>
     </div>
     <div class="home_content">
+        <div class="link-direction">
+            <a href="#">Trang chủ</a>
+            <i class='bx bx-chevron-right'></i>
+            <a href="#" class="link-active">Quản lý bệnh nhân</a>
+        </div>
         <div class="header-title">
             <h1>Quản lý bệnh nhân</h1>
             <i class='bx bx-refresh' onclick="refreshPages()"></i>
@@ -121,6 +126,26 @@
                     <td>data2</td>
                 </tr>
             </table>
+        </div>
+        <div class="paging-show-data">
+            <div class="show-data-count">
+                <p>Hiển thị</p>
+                <select name="dataCount" id="data-count">
+                    <option value="10" selected>10</option>
+                    <option value="10">20</option>
+                    <option value="10">30</option>
+                </select>
+                <p>trong số tổng </p>
+                <p class="all-data">2</p>
+            </div>
+            <div class="paging-data">
+                <ul class="page-list">
+                    <li class="page-detail">1</li>
+                    <li class="page-detail">2</li>
+                    <li class="page-detail">3</li>
+                    <li class="page-detail">4</li>
+                </ul>
+            </div>
         </div>
     </div>
 

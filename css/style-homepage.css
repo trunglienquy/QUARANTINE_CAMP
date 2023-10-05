@@ -12,6 +12,10 @@ body, html {
 }
 a{
     text-decoration: none;
+    color: #000;
+}
+.link-active{
+    color: rgb(0, 255, 255);
 }
 li{
     list-style: none;
@@ -274,4 +278,37 @@ table {
     opacity: 1;
     z-index: 90;
 
+}
+
+
+
+.paging-show-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.show-data-count{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 230px;
+}
+.paging-data{
+    width: 300px;
+}
+.page-list{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.page-detail{
+    margin-left: 20px;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.page-detail:hover{
+    border: 1px solid #000;
+    
 }
