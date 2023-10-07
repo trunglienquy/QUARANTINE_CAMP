@@ -30,7 +30,8 @@ li{
     transition: all .5s ease;
 }
 .sidebar.active{
-    width: 260px;
+    width: 300px;
+    z-index: 10;
 }
 .sidebar .menu-icon{
     display: flex;
@@ -80,7 +81,7 @@ li{
     position: absolute;
     content: "";
     height: 35px;
-    width: 122px;
+    width: 150px;
     top: 0;
     left: 60px;
     transform: translateY(-50%);
@@ -92,8 +93,7 @@ li{
     transition: 0s;
     opacity: 0;
     pointer-events: none;
-    display: block;
-    z-index: 100;
+    z-index: 1000;
 }
 .sidebar li:hover .tooltip{
     transition: all .5s ease;
@@ -111,7 +111,7 @@ li{
     transition: all .5s ease;
     padding-top: 30px;
     padding-right: 20px;
-    z-index: 2;
+    z-index: 1;
 }
 .sidebar.active ~ .home_content{
     width: calc(100% - 300px);
