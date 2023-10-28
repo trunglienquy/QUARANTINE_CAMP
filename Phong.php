@@ -22,35 +22,35 @@
                 <span class="tooltip">Quản lý Bệnh Nhân</span>
             </li>
             <li>
-                <a href="http://localhost/Phong.php">
+                <a href="Phong.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Phòng</span>
                 </a>
                 <span class="tooltip">Quản lý Phòng </span>
             </li>
             <li>
-                <a href="http://localhost/xetnghiem.php">
+                <a href="xetnghiem.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Xét Nghiệm</span>
                 </a>
                 <span class="tooltip">Quản lý Xét Nghiệm</span>
             </li>
             <li>
-                <a href="http://localhost/Nhanvien.php">
+                <a href="Nhanvien.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Nhân Viên</span>
                 </a>
                 <span class="tooltip">Quản lý Nhân Viên</span>
             </li>
             <li>
-                <a href="http://localhost/dieutri.php">
+                <a href="dieutri.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Điều Trị</span>
                 </a>
                 <span class="tooltip">Quản lý Điều Trị</span>
             </li>
             <li>
-                <a href="http://localhost/thuoc.php">
+                <a href="thuoc.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Thuốc</span>
                 </a>

@@ -22,35 +22,35 @@
                 <span class="tooltip">Quản lý Bệnh Nhân</span>
             </li>
             <li>
-                <a href="http://localhost/Phong.php">
+                <a href="Phong.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Phòng</span>
                 </a>
                 <span class="tooltip">Quản lý Phòng </span>
             </li>
             <li>
-                <a href="http://localhost/xetnghiem.php">
+                <a href="xetnghiem.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Xét Nghiệm</span>
                 </a>
                 <span class="tooltip">Quản lý Xét Nghiệm</span>
             </li>
             <li>
-                <a href="http://localhost/Nhanvien.php">
+                <a href="Nhanvien.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Nhân Viên</span>
                 </a>
                 <span class="tooltip">Quản lý Nhân Viên</span>
             </li>
             <li>
-                <a href="http://localhost/dieutri.php">
+                <a href="dieutri.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Điều Trị</span>
                 </a>
                 <span class="tooltip">Quản lý Điều Trị</span>
             </li>
             <li>
-                <a href="http://localhost/thuoc.php">
+                <a href="thuoc.php">
                     <i class='bx bx-home-alt' ></i>
                     <span>Quản lý Thuốc</span>
                 </a>
@@ -81,8 +81,9 @@
                         <i class='bx bx-expand-horizontal'></i>
                     </div>
                     <div class="info-2">
-                        <p> <strong>Le Minh Trung</strong></p>
+                        <p><strong id="adminName">Le Minh Trung</strong></p>
                         <span>Admin</span>
+                        <a href="logout.php" id="logOutLink">Log Out</a>
                     </div>
                 </div>
             </li>
@@ -120,21 +121,21 @@
                     <th>Địa chỉ</th>
                     <th>Ngày bắt đầu làm việc</th>
                 </tr>
-                <tr class="data-table">
+                <tr class="data-table" data-href="./detail/detailEmployee.php">
                     <td>NV1</td>
                     <td>Nguyễn Văn A</td>
                     <td>9013576</td>
                     <td>23, Lạc Long Quân, Phường 6, Quận 10, TPHCM</td>
                     <td>20/01/2022</td>
                 </tr>
-                <tr class="data-table">
+                <tr class="data-table" data-href="./detail/detailEmployee.php">
                     <td>NV2</td>
                     <td>Nguyễn Văn B</td>
                     <td>921458</td>
                     <td>273, An Dương Vương, Phường 3, Quận 5, TPHCM</td>
                     <td>22/03/2022</td>
                 </tr>
-                <tr class="data-table">
+                <tr class="data-table" data-href="./detail/detailEmployee.php">
                     <td>NV3</td>
                     <td>Nguyễn Văn C</td>
                     <td>3548551</td>
@@ -167,5 +168,30 @@
 
 
     <script src="./js/main-homepage.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var rows = document.querySelectorAll(".data-table");
+        rows.forEach(function (row) {
+            row.addEventListener("click", function () {
+                var link = this.getAttribute("data-href");
+                if (link) {
+                    window.location.href = link;
+                }
+            });
+        });
+    });
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // When the admin name is clicked, toggle the Log Out link visibility
+            $('#adminName').on('click', function() {
+                $('#logOutLink').toggleClass('active');
+            });
+        });
+    </script>
+
 </body>
 </html>
