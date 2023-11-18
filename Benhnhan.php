@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+    include ("./mvc/Models/DBConfig.php");
+    $db = new Database;
+    $db->connect();
+    $sql = "SELECT bn.MaBN, CONCAT(bn.Ho, ' ', bn.Ten) AS FullName, bn.SoCMND, bn.Gioitinh, bn.DiaChi, bl.benhlydikem, tc.trieuchung, p.MaPhong FROM benhnhan bn JOIN benhly bl ON bn.mabn = bl.mabn JOIN phong p ON bn.mabn = p.mabn JOIN trieuchung tc ON bn.mabn = tc.mabn";
+    $result = $db->execute($sql);
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +46,7 @@
                             <ul class="list-sub">
                                 <li class="sub-item">
                                     <a href="#">
-                                    <i class='bx bx-user nav_icon'></i>
+                                        <i class='bx bx-user nav_icon'></i>
                                         <span class="nav__name">My Profile</span>
                                     </a>
                                 </li>
@@ -66,32 +72,33 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="#" class="nav__logo">SystemName</a>
+                    <a href="./Benhnhan.php" class="nav__logo">SystemName</a>
                 </div>
                 <div class="nav__list">
-                    <a href="#" class="nav__link active">
+                    <a href="./Benhnhan.php" class="nav__link active">
                         <i class='bx bxs-first-aid nav_icon'></i>
                         <span class="nav__name">Quản lý bệnh nhân</span>
                     </a>
-                    <a href="#" class="nav__link">
+                    <a href="./Phong.php" class="nav__link">
                         <i class='bx bx-building nav_icon'></i>
                         <span class="nav__name">Quản lý Phòng</span>
                     </a>
 
-                    <div class="nav__link collapse">
-                        <i class='bx bx-injection nav_icon'></i>
+                    <a href="./xetnghiem.php" class="nav__link">
+                        <i class='bx bxs-user-account nav_icon'></i>
                         <span class="nav__name">Quản lý Xét Nghiệm</span>
-                    </div>
+                    </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="./Nhanvien.php" class="nav__link">
                         <i class='bx bxs-user-account nav_icon'></i>
                         <span class="nav__name">Quản lý Nhân Viên</span>
                     </a>
-                    <div class="nav__link collapse">
-                        <i class='bx bx-plus-medical nav_icon'></i>
+
+                    <a href="./dieutri.php" class="nav__link">
+                        <i class='bx bx-capsule nav_icon'></i>
                         <span class="nav__name">Quản lý Điều Trị</span>
-                    </div>
-                    <a href="#" class="nav__link">
+                    </a>
+                    <a href="./thuoc.php" class="nav__link">
                         <i class='bx bx-capsule nav_icon'></i>
                         <span class="nav__name">Quản lý Thuốc</span>
                     </a>
@@ -100,7 +107,7 @@
         </nav>
     </div>
 
-    
+
 
     <div class="home_content">
         <div class="link-direction">
@@ -140,42 +147,27 @@
                     <th>Địa chỉ</th>
                     <th>Bệnh lý</th>
                     <th>Triệu chứng</th>
-                    <th>Tình trạng</th>
                     <th>Mã phòng</th>
                 </tr>
+                <?php
+                    if($result){
+                        while($row = $db->getData()){   
+                ?>
                 <tr class="data-table">
-                    <td>BN1</td>
-                    <td>Nguyen Van A</td>
-                    <td>9739791263</td>
-                    <td>Nam</td>
-                    <td>Hồ Chí Minh</td>
-                    <td>Ung Thư</td>
-                    <td>Khó Thở</td>
-                    <td>Nghiêm trọng</td>
-                    <td>P01</td>
+                    <td><?php echo $row["MaBN"]; ?></td>
+                    <td><?php echo $row["FullName"]; ?></td>
+                    <td><?php echo $row["SoCMND"]; ?></td>
+                    <td><?php echo $row["Gioitinh"]; ?></td>
+                    <td><?php echo $row["DiaChi"]; ?></td>
+                    <td><?php echo $row["benhlydikem"]; ?></td>
+                    <td><?php echo $row["trieuchung"]; ?></td>
+                    <td><?php echo $row["MaPhong"]; ?></td>
                 </tr>
-                <tr class="data-table">
-                    <td>BN2</td>
-                    <td>Nguyen Van B</td>
-                    <td>5757991781</td>
-                    <td>Nam</td>
-                    <td>Đà Nẵng</td>
-                    <td>Tiểu đường</td>
-                    <td>Đau</td>
-                    <td class="status-BN">Nghiêm trọng</td>
-                    <td>PO2</td>
-                </tr>
-                <tr class="data-table">
-                    <td>BN3</td>
-                    <td>Nguyen Thi C</td>
-                    <td>3512927760</td>
-                    <td>Nữ</td>
-                    <td>Hà Nội</td>
-                    <td>Bệnh tim</td>
-                    <td>Tức ngực</td>
-                    <td>Nghiêm trọng</td>
-                    <td>P03</td>
-                </tr>
+                <?php
+                        }
+                    }
+                ?>
+                
             </table>
         </div>
         <div class="paging-show-data">
