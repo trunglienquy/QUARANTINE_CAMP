@@ -8,11 +8,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/style-homepage.css">
     <link rel="stylesheet" href="../css/style-detail.css">
+    <link rel="stylesheet" href="./css/style-detail.css">
     <title>Document</title>
 </head>
 
 <body>
-<header class="header">
+    <header class="header">
         <div class="info-admin">
             <ul class="list-admin">
                 <li>
@@ -33,7 +34,8 @@
                     </div>
                     <div class="information-admin">
                         <div class="avatar-user" id="avatar_user">
-                            <img src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-1/90416718_1498025510372306_6205470286582644736_n.jpg?stp=dst-jpg_p320x320&_nc_cat=107&ccb=1-7&_nc_sid=2b6aad&_nc_eui2=AeGuH-youRH1u7P0JAnfJgcu7wi5K2NWFKrvCLkrY1YUqmcnAbCLicFccP0CD-Cm_Hwf2rw4bFs0OADvygJIpq29&_nc_ohc=ad-Wp8piJQ8AX-lZyRz&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfAMe1UNp6FoDf978C3xTTDedyqBfVjIFGPVkdeuPqXP8Q&oe=656C00B0" alt="">
+                            <img src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-1/90416718_1498025510372306_6205470286582644736_n.jpg?stp=dst-jpg_p320x320&_nc_cat=107&ccb=1-7&_nc_sid=2b6aad&_nc_eui2=AeGuH-youRH1u7P0JAnfJgcu7wi5K2NWFKrvCLkrY1YUqmcnAbCLicFccP0CD-Cm_Hwf2rw4bFs0OADvygJIpq29&_nc_ohc=ad-Wp8piJQ8AX-lZyRz&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfAMe1UNp6FoDf978C3xTTDedyqBfVjIFGPVkdeuPqXP8Q&oe=656C00B0"
+                                alt="">
                         </div>
                         <div class="sub-menu-user" id="sub_menu_user">
                             <ul class="list-sub">
@@ -100,25 +102,41 @@
         </nav>
     </div>
     <div class="home_content">
-        <div class="type-employee">
-            <div class="img-and-info">
-                <img src="https://th.bing.com/th/id/R.49376b553f3b5f5b67409592744e5579?rik=WzvpBRDluxLgBg&pid=ImgRaw&r=0" alt="">
-                <div class="type">
-                    <h4>David Nguyen</h4>
-                    <p>Bác sĩ</p>
+        <div class="search-area">
+            <form class="nosubmit">
+                <input class="nosubmit" type="search" placeholder="Search...">
+            </form>
+        </div>
+        <div class="title-form-employee">
+            <h2>Chi tiết nhân viên</h2>
+        </div>
+        <div class="flex-form-employee">
+            <div class="image-employee">
+                <div class="area-avatar">
+                    <img src="https://th.bing.com/th/id/OIP.7Zf_YAZDsTjp98Lj0lt1WgHaHa?w=512&h=512&rs=1&pid=ImgDetMain"
+                        alt="">
+                </div>
+                <div class="area-info">
+                    <div class="col-info">
+                        <p class="sub-info-avatar">Ngày bắt đầu làm việc</p>
+                        <p><strong>12/01/2023</strong></p>
+                    </div>
+                    <div class="col-info">
+                        <p>Department</p>
+                        <p><strong>Tòa A</strong></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="info-employee">
-            <div class="info-detail">
+            <div class="data-form-employee">
                 <h2>Thông tin cá nhân</h2>
-                <div class="flex-info"><p><strong>Mã số nhân viên: </strong><p>00001</p></p></div>
-                <div class="flex-info"><p><strong>Họ và tên: </strong><p>David Nguyen</p></p></div>
-                <div class="flex-info"><p><strong>Chức vụ: </strong><p>Doctor</p></p></div>
-                <div class="flex-info"><p><strong>Địa chỉ: </strong><p>VietNam Abc Road DEF</p></p></div>
-                <div class="flex-info"><p><strong>Số điện thoại: </strong><p>0364781722</p></p></div>
-            </div>
-            <div class="patient-management">
+                <div class="col-info sub-data">
+                    <p class="sub-info-avatar ">Họ và tên</p>
+                    <p><strong>Nguyễn Văn B</strong></p>
+                </div>
+
+
+                <div class="patient-management">
+                <strong>Thông tin bệnh nhân đang điều trị</strong>
                 <table>
                     <tr>
                         <th>Mã số bệnh nhân</th>
@@ -140,18 +158,19 @@
                     </tr>
                 </table>
             </div>
+            </div>
         </div>
     </div>
 
-<!-- ===== IONICONS ===== -->
-<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <!-- ===== IONICONS ===== -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="./js/main-homepage.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // When the admin name is clicked, toggle the Log Out link visibility
-            $('#adminName').on('click', function() {
+            $('#adminName').on('click', function () {
                 $('#logOutLink').toggleClass('active');
             });
         });
