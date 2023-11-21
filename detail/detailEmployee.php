@@ -12,85 +12,92 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="menu-icon">
-            <i class='bx bx-menu-alt-left'></i>
+<header class="header">
+        <div class="info-admin">
+            <ul class="list-admin">
+                <li>
+                    <div class="box-1"></div>
+                    <i class='bx bx-heart logo-main'></i>
+                </li>
+                <li class="notification-and-admin">
+                    <div class="bell-ring-main">
+                        <div class="bell-ring">
+                            <i class='bx bx-bell'>
+                                <div class="circle-notification">0</div>
+                            </i>
+                        </div>
+                        <div class="main-notification">
+                            <p class="title-empty">Hiện đang không có thông báo nào</p>
+                            <p class="have-notification"></p>
+                        </div>
+                    </div>
+                    <div class="information-admin">
+                        <div class="avatar-user" id="avatar_user">
+                            <img src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-1/90416718_1498025510372306_6205470286582644736_n.jpg?stp=dst-jpg_p320x320&_nc_cat=107&ccb=1-7&_nc_sid=2b6aad&_nc_eui2=AeGuH-youRH1u7P0JAnfJgcu7wi5K2NWFKrvCLkrY1YUqmcnAbCLicFccP0CD-Cm_Hwf2rw4bFs0OADvygJIpq29&_nc_ohc=ad-Wp8piJQ8AX-lZyRz&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfAMe1UNp6FoDf978C3xTTDedyqBfVjIFGPVkdeuPqXP8Q&oe=656C00B0" alt="">
+                        </div>
+                        <div class="sub-menu-user" id="sub_menu_user">
+                            <ul class="list-sub">
+                                <li class="sub-item">
+                                    <a href="#">
+                                        <i class='bx bx-user nav_icon'></i>
+                                        <span class="nav__name">My Profile</span>
+                                    </a>
+                                </li>
+                                <li class="sub-item">
+                                    <a href="#">
+                                        <i class='bx bx-log-out nav_icon'></i>
+                                        <span class="nav__name">Log out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="name-user">
+                            <p>Le Minh Trung</p>
+                            <span>Admin</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <ul class="nav-link">
-            <li>
-                <a href="Benhnhan.php">
-                    <i class='bx bx-home-alt'></i>
-                    <span>Quản lý Bệnh Nhân</span>
-                </a>
-                <span class="tooltip">Quản lý Bệnh Nhân</span>
-            </li>
-            <li>
-                <a href="Phong.php">
-                    <i class='bx bx-home-alt'></i>
-                    <span>Quản lý Phòng</span>
-                </a>
-                <span class="tooltip">Quản lý Phòng </span>
-            </li>
-            <li>
-                <a href="xetnghiem.php">
-                    <i class='bx bx-home-alt'></i>
-                    <span>Quản lý Xét Nghiệm</span>
-                </a>
-                <span class="tooltip">Quản lý Xét Nghiệm</span>
-            </li>
-            <li>
-                <a href="Nhanvien.php">
-                    <i class='bx bx-home-alt'></i>
-                    <span>Quản lý Nhân Viên</span>
-                </a>
-                <span class="tooltip">Quản lý Nhân Viên</span>
-            </li>
-            <li>
-                <a href="dieutri.php">
-                    <i class='bx bx-home-alt'></i>
-                    <span>Quản lý Điều Trị</span>
-                </a>
-                <span class="tooltip">Quản lý Điều Trị</span>
-            </li>
-            <li>
-                <a href="thuoc.php">
-                    <i class='bx bx-home-alt'></i>
-                    <span>Quản lý Thuốc</span>
-                </a>
-                <span class="tooltip">Quản lý Thuốc</span>
-            </li>
-        </ul>
-    </div>
-    <div class="info-admin">
-        <ul>
-            <li>
-                <div class="box-1"></div>
-                <i class='bx bx-heart'></i>
-            </li>
-            <li class="notification-and-admin">
-                <div class="bell-ring-main">
-                    <div class="bell-ring">
-                        <i class='bx bx-bell'>
-                            <div class="circle-notification">0</div>
-                        </i>
-                    </div>
-                    <div class="main-notification">
-                        <p class="title-empty">Hiện đang không có thông báo nào</p>
-                        <p class="have-notification"></p>
-                    </div>
+    </header>
+    <div class="l-navbar" id="navbar">
+        <nav class="nav">
+            <div>
+                <div class="nav__brand">
+                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                    <a href="./Benhnhan.php" class="nav__logo">SystemName</a>
                 </div>
-                <div class="information-admin">
-                    <div class="info-1">
-                        <i class='bx bx-expand-horizontal'></i>
-                    </div>
-                    <div class="info-2">
-                        <p><strong id="adminName">Le Minh Trung</strong></p>
-                        <span>Admin</span>
-                        <a href="logout.php" id="logOutLink">Log Out</a>
-                    </div>
+                <div class="nav__list">
+                    <a href="./Benhnhan.php" class="nav__link active">
+                        <i class='bx bxs-first-aid nav_icon'></i>
+                        <span class="nav__name">Quản lý bệnh nhân</span>
+                    </a>
+                    <a href="./Phong.php" class="nav__link">
+                        <i class='bx bx-building nav_icon'></i>
+                        <span class="nav__name">Quản lý Phòng</span>
+                    </a>
+
+                    <a href="./xetnghiem.php" class="nav__link">
+                        <i class='bx bxs-user-account nav_icon'></i>
+                        <span class="nav__name">Quản lý Xét Nghiệm</span>
+                    </a>
+
+                    <a href="./Nhanvien.php" class="nav__link">
+                        <i class='bx bxs-user-account nav_icon'></i>
+                        <span class="nav__name">Quản lý Nhân Viên</span>
+                    </a>
+
+                    <a href="./dieutri.php" class="nav__link">
+                        <i class='bx bx-capsule nav_icon'></i>
+                        <span class="nav__name">Quản lý Điều Trị</span>
+                    </a>
+                    <a href="./thuoc.php" class="nav__link">
+                        <i class='bx bx-capsule nav_icon'></i>
+                        <span class="nav__name">Quản lý Thuốc</span>
+                    </a>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </nav>
     </div>
     <div class="home_content">
         <div class="type-employee">
@@ -132,21 +139,12 @@
                         <td><strong>Đã điều trị</strong></td>
                     </tr>
                 </table>
-                <div class="show-data-count show-data-detail">
-                    <p>Hiển thị</p>
-                    <select name="dataCount" id="data-count">
-                        <option value="10" selected>10</option>
-                        <option value="10">20</option>
-                        <option value="10">30</option>
-                    </select>
-                    <p>trong số tổng </p>
-                    <p class="all-data">1</p>
-                </div>
             </div>
         </div>
     </div>
 
-
+<!-- ===== IONICONS ===== -->
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="./js/main-homepage.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -158,6 +156,7 @@
             });
         });
     </script>
+    <script src="../js/sidebar.js"></script>
 
 
 </body>
