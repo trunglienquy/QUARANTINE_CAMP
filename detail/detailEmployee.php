@@ -122,7 +122,7 @@
                         <p><strong>12/01/2023</strong></p>
                     </div>
                     <div class="col-info">
-                        <p>Department</p>
+                        <p class="sub-info-avatar">Department</p>
                         <p><strong>Tòa A</strong></p>
                     </div>
                 </div>
