@@ -14,6 +14,11 @@
 <body>
     <?php
     include("./include/header.php");
+    include("./mvc/Models/DBConfig.php");
+    $db = new Database;
+    $db->connect();
+    $sql = "SELECT nv.MaNV, nv.HoTen, nv.Diachi, nv.Gioitinh, nv.SDT, nv.ChucVu, nv.Ngaybatdaulamviec FROM nhanvien nv";
+    $result = $db->execute($sql);
     ?>
     <div class="home_content">
         <div class="link-direction">
@@ -47,32 +52,31 @@
             <table>
                 <tr class="tr-title">
                     <th>Mã Nhân viên</th>
-                    <th>Họ Tên Nhân viên</th>
-                    <th>Số điện thoại</th>
+                    <th>Họ Tên</th>
                     <th>Địa chỉ</th>
+                    <th>Giới tính</th>
+                    <th>Số điện thoại</th>
+                    <th>Chức vụ</th>
                     <th>Ngày bắt đầu làm việc</th>
                 </tr>
+                <?php
+                    if($result){
+                        while($row = $db->getData()){   
+                ?>
                 <tr class="data-table" data-href="./detail/detailEmployee.php">
-                    <td>NV1</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>9013576</td>
-                    <td>23, Lạc Long Quân, Phường 6, Quận 10, TPHCM</td>
-                    <td>20/01/2022</td>
+                    <td><?php echo $row['MaNV'] ?></td>
+                    <td><?php echo $row['HoTen'] ?></td>
+                    <td><?php echo $row['Diachi'] ?></td>
+                    <td><?php echo $row['Gioitinh'] ?></td>
+                    <td><?php echo $row['SDT'] ?></td>
+                    <td><?php echo $row['ChucVu'] ?></td>
+                    <td><?php echo $row['Ngaybatdaulamviec'] ?></td>
+                    
                 </tr>
-                <tr class="data-table" data-href="./detail/detailEmployee.php">
-                    <td>NV2</td>
-                    <td>Nguyễn Văn B</td>
-                    <td>921458</td>
-                    <td>273, An Dương Vương, Phường 3, Quận 5, TPHCM</td>
-                    <td>22/03/2022</td>
-                </tr>
-                <tr class="data-table" data-href="./detail/detailEmployee.php">
-                    <td>NV3</td>
-                    <td>Nguyễn Văn C</td>
-                    <td>3548551</td>
-                    <td>268, Điện Biên Phủ, Phường 7, Quận 3, TPHCM</td>
-                    <td>20/10/2022</td>
-                </tr>
+                <?php
+                        }
+                    }
+                ?>
             </table>
         </div>
         <div class="paging-show-data">

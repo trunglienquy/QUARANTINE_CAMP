@@ -110,24 +110,31 @@ $db->connect();
         <h2>Thông tin Nhân Viên</h2>
         <form method="post">
             <div class="form-group">
-                <label for="Ma so">Mã số</label>
-                <input type="text" id="maso" name="maso" required>
+                <label for="ten">Họ và Tên</label>
+                <input type="text" id="ten" name="ten" required>
             </div>
             <div class="form-group">
-                <label for="ten">Họ</label>
-                <input type="text" id="ten" name="ho" required>
+                <label for="diachi">Địa chỉ</label>
+                <input type="text" id="diachi" name="diachi" required>
             </div>
             <div class="form-group">
-                <label for="Ma so">Tên</label>
-                <input type="text" id="maso" name="ten" required>
-            </div>
-            <div class="form-group">
-                <label for="Ma so">Chức vụ</label>
-                <select name="role-employee" id="roleEmployee">
-                    <option value="bacsi">Bác Sĩ</option>
-                    <option value="yta">Y Tá</option>
-                    <option value="tnv">Tình nguyện viên</option>
+                <label for="gender">Giới tính</label>
+                <select name="gender" id="roleEmployee">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="chucvu">Chức vụ</label>
+                <select name="role-employee" id="roleEmployee">
+                    <option value="Bác Sĩ">Bác Sĩ</option>
+                    <option value="Y Tá">Y Tá</option>
+                    <option value="Tình nguyện viên">Tình nguyện viên</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" required>
             </div>
             <div class="form-group">
                 <label for="ngaybatdau">Ngày bắt đầu làm việc</label>
@@ -137,6 +144,37 @@ $db->connect();
         </form>
     </div>
     </div>
+    <?php
+        if (isset($_POST["submit"])){
+            $result = $db->execute("SELECT MaNV FROM nhanvien");
+            if ($result){
+                $num_rows = mysqli_num_rows($result) + 1;
+            }
+            $pat_lname = $_POST["ten"];
+            $pat_role = $_POST["role-employee"];
+            $pat_address = $_POST["diachi"];
+            $pat_startDay = $_POST["ngaybatdau"];
+            $pat_gender = $_POST["gender"];
+            $pat_phone = $_POST["phone"];
+            $sqlPeople = "INSERT INTO nhanvien (MaNV, Ngaybatdaulamviec, HoTen, DiaChi, Gioitinh, SDT, ChucVu) VALUES
+            ('$num_rows', '$pat_startDay', '$pat_lname', '$pat_address', '$pat_gender', '$pat_phone', '$pat_role');
+            ";
+            $resultInsertEmployee = $db->execute($sqlPeople);
+            if ($pat_role == "Bác Sĩ"){
+                $sqlDoctor = "INSERT INTO doctors (Ma_Doctors) VALUES ('$num_rows')";
+                $resultSqlDoctor = $db->execute($sqlDoctor);
+            }
+            else if ($pat_role == "Y Tá"){
+                $sqlNurse = "INSERT INTO nurse (Ma_Nurse) VALUES ('$num_rows')";
+                $resultSqlNurse = $db->execute($sqlNurse);
+            }
+            else if ($pat_role == "Tình nguyện viên"){
+                $sqlVolunteer = "INSERT INTO volunteers (Ma_Volunteers) VALUES ('$num_rows')";
+                $resultSqlVolunteer = $db->execute($sqlVolunteer);
+            }
+        }
+    
+    ?>
 
     <!-- ===== IONICONS ===== -->
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
