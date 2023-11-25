@@ -172,6 +172,7 @@ $db->connect();
                 $sqlVolunteer = "INSERT INTO volunteers (Ma_Volunteers) VALUES ('$num_rows')";
                 $resultSqlVolunteer = $db->execute($sqlVolunteer);
             }
+            echo '<script>window.location.href = "../nhanvien.php";</script>';
         }
     
     ?>

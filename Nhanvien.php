@@ -29,6 +29,11 @@
         <div class="header-title">
             <h1>Quản lý Nhân viên</h1>
             <i class='bx bx-refresh' onclick="refreshPages()"></i>
+            <script>
+                function refreshPages() {
+                    location.reload();
+                }
+            </script>
         </div>
         <div class="search-sort">
             <div class="search-bar">
@@ -63,7 +68,7 @@
                     if($result){
                         while($row = $db->getData()){   
                 ?>
-                <tr class="data-table" data-href="./detail/detailEmployee.php">
+                <tr class="data-table" data-href="./detail/detailEmployee.php?id=<?= $row['MaNV'] ?>">
                     <td><?php echo $row['MaNV'] ?></td>
                     <td><?php echo $row['HoTen'] ?></td>
                     <td><?php echo $row['Diachi'] ?></td>

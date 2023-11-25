@@ -34,5 +34,12 @@
             }
             return $data;
         }
+        public function getNumRows() {
+            if ($this->result) {
+                return mysqli_num_rows($this->result);
+            } else {
+                return 0;
+            }
+        }
     }
 ?>

@@ -530,3 +530,7 @@ input[type="submit"] {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.form_manager{
+    border: none;
+}
