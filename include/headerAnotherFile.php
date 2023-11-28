@@ -51,30 +51,30 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="./Benhnhan.php" class="nav__logo">SystemName</a>
+                    <a href="../Benhnhan.php" class="nav__logo">SystemName</a>
                 </div>
                 <div class="nav__list">
-                    <a href="./Benhnhan.php" class="nav__link active">
+                    <a href="../Benhnhan.php" class="nav__link active">
                         <i class='bx bxs-first-aid nav_icon'></i>
                         <span class="nav__name">Quản lý bệnh nhân</span>
                     </a>
-                    <a href="./Phong.php" class="nav__link">
+                    <a href="../Phong.php" class="nav__link">
                         <i class='bx bx-building nav_icon'></i>
                         <span class="nav__name">Quản lý Phòng</span>
                     </a>
-                    <a href="./xetnghiem.php" class="nav__link">
+                    <a href="../xetnghiem.php" class="nav__link">
                         <i class='bx bx-injection nav_icon'></i>
                         <span class="nav__name">Quản lý Xét Nghiệm</span>
                     </a>
-                    <a href="./Nhanvien.php" class="nav__link">
+                    <a href="../Nhanvien.php" class="nav__link">
                         <i class='bx bxs-user-account nav_icon'></i>
                         <span class="nav__name">Quản lý Nhân Viên</span>
                     </a>
-                    <a href="./dieutri.php" class="nav__link">
+                    <a href="../dieutri.php" class="nav__link">
                         <i class='bx bx-plus-medical nav_icon'></i>
                         <span class="nav__name">Quản lý Điều Trị</span>
                     </a>
-                    <a href="./thuoc.php" class="nav__link">
+                    <a href="../thuoc.php" class="nav__link">
                         <i class='bx bx-capsule nav_icon'></i>
                         <span class="nav__name">Quản lý Thuốc</span>
                     </a>
@@ -82,7 +82,3 @@
             </div>
         </nav>
     </div>
-
-
-
-    

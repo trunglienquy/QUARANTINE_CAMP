@@ -14,7 +14,7 @@
 
 <body>
     <?php
-    include("../include/headerAnotherFile.php");
+    include("../include/header.php");
     include("../mvc/Models/DBConfig.php");
     $db = new Database;
     $db->connect();
@@ -112,9 +112,18 @@
                             echo "Tên bác sĩ trưởng khoa: <a href='detailEmployee.php?id=$idManager' style='color: blue;'>$doctorName</a><br>";
                         }
                     }
+
                     ?>
                 </div>
-                <div class="patient-management">
+            <?php
+            } elseif ($row['ChucVu'] == "Y Tá") {
+                // Handle the case when ChucVu is "Y Tá"
+            } else {
+                // Handle other cases if needed
+            }
+            ?>
+            <a href="../Nhanvien.php">Quay lại trang quản lý</a>
+            <div class="patient-management">
                 <strong>Thông tin bệnh nhân đang điều trị</strong>
                 <table>
                     <tr>
@@ -137,15 +146,6 @@
                     </tr>
                 </table>
             </div>
-            <?php
-            }
-            
-            elseif ($row['ChucVu'] == "Y Tá") {
-                // Handle the case when ChucVu is "Y Tá"
-            } else {
-                // Handle other cases if needed
-            }
-            ?>            
         </div>
     </div>
         <?php

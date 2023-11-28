@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-    include ("./mvc/Models/DBConfig.php");
-    $db = new Database;
-    $db->connect();
-    $sql = "SELECT bn.MaBN, CONCAT(bn.Ho, ' ', bn.Ten) AS FullName, bn.SoCMND, bn.Gioitinh, bn.DiaChi, bl.benhlydikem, tc.trieuchung, p.MaPhong FROM benhnhan bn JOIN benhly bl ON bn.mabn = bl.mabn JOIN phong p ON bn.mabn = p.mabn JOIN trieuchung tc ON bn.mabn = tc.mabn";
-    $result = $db->execute($sql);
-?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +14,13 @@
 
 <body>
     <?php
-        include("./include/header.php") 
+    include ("./include/header.php");
+    include ("./mvc/Models/DBConfig.php");
+    $db = new Database;
+    $db->connect();
+    $sql = "SELECT bn.MaBN, bn.HoTen, bn.SoCMND, bn.SDT, bn.DiaChi, bn.Gioitinh, bn.chuyendentu, bn.thongtinxnbandau, bn.Ma_Staff, 
+    bn.Ngay_nhap_vien, bn.Ngay_xuat_vien, bn.Ma_Nurse FROM benhnhan bn";
+    $result = $db->execute($sql);
     ?>
     <div class="home_content">
         <div class="link-direction">
@@ -31,6 +31,11 @@
         <div class="header-title">
             <h1>Quản lý bệnh nhân</h1>
             <i class='bx bx-refresh' onclick="refreshPages()"></i>
+            <script>
+                function refreshPages() {
+                    location.reload();
+                }
+            </script>
         </div>
         <div class="search-sort">
             <form action="" method="post">
@@ -59,25 +64,33 @@
                     <th>Mã Bệnh nhân</th>
                     <th>Họ và Tên</th>
                     <th>Số CMND</th>
-                    <th>Giới tính</th>
+                    <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
-                    <th>Bệnh lý</th>
-                    <th>Triệu chứng</th>
-                    <th>Mã phòng</th>
+                    <th>Giới tính</th>
+                    <th>Chuyển đến từ</th>
+                    <th>Thông tin xét nghiệm ban đầu</th>
+                    <th>Mã Staff</th>
+                    <th>Ngày nhập viện</th>
+                    <th>Ngày xuất viện</th>
+                    <th>Mã Nurse</th>
                 </tr>
                 <?php
                     if($result){
                         while($row = $db->getData()){   
                 ?>
-                <tr class="data-table">
+                <tr class="data-table" data-href="./detail/detailPatient.php?id=<?= $row['MaBN'] ?>">
                     <td><?php echo $row["MaBN"]; ?></td>
-                    <td><?php echo $row["FullName"]; ?></td>
+                    <td><?php echo $row["HoTen"]; ?></td>
                     <td><?php echo $row["SoCMND"]; ?></td>
-                    <td><?php echo $row["Gioitinh"]; ?></td>
+                    <td><?php echo $row["SDT"]; ?></td>
                     <td><?php echo $row["DiaChi"]; ?></td>
-                    <td><?php echo $row["benhlydikem"]; ?></td>
-                    <td><?php echo $row["trieuchung"]; ?></td>
-                    <td><?php echo $row["MaPhong"]; ?></td>
+                    <td><?php echo $row["Gioitinh"]; ?></td>
+                    <td><?php echo $row["chuyendentu"]; ?></td>
+                    <td><?php echo $row["thongtinxnbandau"]; ?></td>
+                    <td><?php echo $row["Ma_Staff"]; ?></td>
+                    <td><?php echo $row["Ngay_nhap_vien"]; ?></td>
+                    <td><?php echo $row["Ngay_xuat_vien"]; ?></td>
+                    <td><?php echo $row["Ma_Nurse"]; ?></td>
                 </tr>
                 <?php
                         }
@@ -98,27 +111,34 @@
         </div>
     </div>
 
-    <!-- code dang dang do -->
-    <?php
-            if (isset($_POST["search"])) {
-                $sdata = $_POST['searchdata'];
-                $sql = "SELECT * FROM benhnhan WHERE LOWER(CONCAT(benhnhan.Ho, ' ', benhnhan.Ten)) LIKE '%$sdata%'";
-                $resultSearch = $db->execute($sql);
-                $num = mysqli_num_rows($resultSearch);
-                if ($num > 0) {
-                    while ($rowSearch = mysqli_fetch_array($resultSearch)) {
-        ?>
-            <?php
-                    }
-                }
-            }
-            ?>
     <!-- ===== IONICONS ===== -->
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-
-
     <script src="./js/main-homepage.js"></script>
     <script src="./js/sidebar.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var rows = document.querySelectorAll(".data-table");
+            rows.forEach(function (row) {
+                row.addEventListener("click", function () {
+                    var link = this.getAttribute("data-href");
+                    if (link) {
+                        window.location.href = link;
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // When the admin name is clicked, toggle the Log Out link visibility
+            $('#adminName').on('click', function () {
+                $('#logOutLink').toggleClass('active');
+            });
+        });
+    </script>
 </body>
 
 </html>

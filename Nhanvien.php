@@ -84,16 +84,6 @@
                 ?>
             </table>
         </div>
-        <div class="paging-show-data">
-            <div class="paging-data">
-                <ul class="page-list">
-                    <li class="page-detail">1</li>
-                    <li class="page-detail">2</li>
-                    <li class="page-detail">3</li>
-                    <li class="page-detail">4</li>
-                </ul>
-            </div>
-        </div>
     </div>
 
 
