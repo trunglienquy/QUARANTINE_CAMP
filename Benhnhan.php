@@ -66,7 +66,8 @@
                     <th>Số CMND</th>
                     <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
-                    <th>Giới tính</th>
+                    <th>Giới tính</th> <!--- thay đổi dATA --->
+                    <!-- CĂT TỪ KHÚC NÀY -->
                     <th>Chuyển đến từ</th>
                     <th>Thông tin xét nghiệm ban đầu</th>
                     <th>Mã Staff</th>

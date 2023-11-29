@@ -22,7 +22,7 @@ $db->connect();
 ?>
 <body>
     <?php
-        include("../include/header.php");
+        include("../include/headerAnotherFile.php");
     ?>
 
     <div class="container">
@@ -79,7 +79,7 @@ $db->connect();
             </div>
             <div class="form-group">
                 <label for="ngayketthuc">Ngày xuất viện</label>
-                <input type="datetime-local" id="date-start" name="ngayketthuc" required>
+                <input type="datetime-local" id="date-start" name="ngayketthuc">
             </div>
             <div class="form-group">
                 <label for="nurseSelection">Mã Nurse</label>
@@ -95,6 +95,7 @@ $db->connect();
                     ?>
                 </select>
             </div>
+            <!-- BỆNH LÝ ĐI KÈM, TRIỆU CHỨNG THƯỜNG, TRIỆU CHỨNG NGHIÊM TRONG (CAN NULL), PHÂN VÀO PHONG (DỰA VÀO TÌNH TRẠNG) -->
             <input type="submit" name="submit" value="Lưu Thông Tin">
         </form>
     </div>
