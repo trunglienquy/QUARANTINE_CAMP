@@ -12,7 +12,7 @@
     <?php
         include("./mvc/Models/DBConfig.php");
         $db = new Database;
-        $db->connect();
+        $conn = $db->connect();
     ?>
 <body>
     <nav>
@@ -37,17 +37,22 @@
                 Tình hình dịch bệnh đang diễn biến phức tạp, chúng ta mỗi người một tay cùng nhau đẩy lùi dịch bệnh, chấp hành nghiêm túc những quy định của nhà nước, đeo khẩu trang nơi công cộng, giữ gìn vệ sinh và khoảng cách đúng quy định, không được chủ quan bạn nhé. Ở nhà vì bạn, vì tôi, vì cộng đồng!
             </small>
         <?php
-        if (isset($_POST["submit"])){
+        if (isset($_POST["submit"])) {
             $username = $_POST["username"];
             $password = $_POST["pass_user"];
-            $sql = "SELECT * FROM user WHERE (username = '$username' AND password = '$password')";
-            $result = $db->execute($sql);
-            if (mysqli_num_rows($result) > 0){
+
+            $sql = "SELECT * FROM user WHERE (username = ? AND password = ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss", $username, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        
+            if ($result->num_rows > 0) {
                 header("location: benhnhan.php");
+            } else {
+                echo '<p style="color: red;">Tên đăng nhập hoặc mật khẩu không đúng</p>';
             }
-            else{
-                echo'<p style="color: red;">Tên đăng nhập hoặc mật khẩu không đúng</p>';
-            }
+            $stmt->close();
         }
         ?>
         </div>

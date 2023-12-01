@@ -72,7 +72,16 @@
                     <td><?php echo $row['MaNV'] ?></td>
                     <td><?php echo $row['HoTen'] ?></td>
                     <td><?php echo $row['Diachi'] ?></td>
-                    <td><?php echo $row['Gioitinh'] ?></td>
+                    <td>
+                        <?php if ($row['Gioitinh'] == 1){
+                            echo 'Nam';
+                        }else if ($row['Gioitinh'] == 2){
+                            echo 'Nữ';
+                        }else{
+                            echo '';
+                        }
+                        ?>
+                    </td>
                     <td><?php echo $row['SDT'] ?></td>
                     <td><?php echo $row['ChucVu'] ?></td>
                     <td><?php echo $row['Ngaybatdaulamviec'] ?></td>

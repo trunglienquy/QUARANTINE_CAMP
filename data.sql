@@ -1,0 +1,1 @@
+INSERT INTO benhnhan (MaBN, HoTen, SoCMND, SDT, DiaChi, Gioitinh, chuyendentu, thongtinxnbandau, Ma_Staff, Ngay_nhap_vien, Ngay_xuat_vien, Ma_Nurse) VALUES ()

@@ -47,8 +47,8 @@ $db->connect();
             <div class="form-group">
                 <label for="gender">Giới Tính:</label>
                 <select id="gender" name="gender">
-                    <option value="nam">Nam</option>
-                    <option value="nu">Nữ</option>
+                    <option value="1">Nam</option>
+                    <option value="2">Nữ</option>
                 </select>
             </div>
             <div class="form-group">
@@ -78,10 +78,6 @@ $db->connect();
                 <input type="datetime-local" id="date-start" name="ngaybatdau" required>
             </div>
             <div class="form-group">
-                <label for="ngayketthuc">Ngày xuất viện</label>
-                <input type="datetime-local" id="date-start" name="ngayketthuc">
-            </div>
-            <div class="form-group">
                 <label for="nurseSelection">Mã Nurse</label>
                 <select name="nurseSelection" id="nurseSelection">
                     <?php
@@ -90,6 +86,31 @@ $db->connect();
                         while ($row = $resultGetNurse->fetch_assoc()) {
                     ?>
                     <option value="<?php echo $row['Ma_Nurse'] ?>"><?php echo $row['Ma_Nurse'] ?> - <?php echo $row['HoTen'] ?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trieuchungthuong">Triệu chứng thường</label>
+                <input type="text" id="trieuchungthuong" name="trieuchungthuong" required>
+            </div>
+            <div class="form-group">
+                <label for="trieuchungnghiemtrong">Triệu chứng nghiêm trọng</label>
+                <input type="text" id="trieuchungnghiemtrong" name="trieuchungnghiemtrong">
+            </div>
+            <div class="form-group">
+                <label for="phanvaophong">Phòng</label>
+                <select name="phanvaophong" id="phanvaophong">
+                    <?php
+                        $sqlGetRoom = "SELECT * FROM phong";
+                        $resultGetRoom = $db->execute($sqlGetRoom);
+                        while ($row = $resultGetRoom->fetch_assoc()) {
+                            $totalRoomCurrent = 25 - $row['succhua'];
+                    ?>
+                    <option value="<?php echo $row['MaPhong'] ?>" <?php echo ($row['succhua'] == 0) ? 'disabled' : '' ?>>
+                        Loại phòng: <?php echo $row['loaiphong'] ?> - Tầng <?php echo $row['toanha'] ?> - Sức chứa: <?php echo $totalRoomCurrent; ?>/25
+                    </option>
                     <?php
                         }
                     ?>
@@ -117,13 +138,32 @@ $db->connect();
             $pat_startDay = $_POST["ngaybatdau"];
             $pat_endDay = $_POST["ngayketthuc"];
             $pat_manurse = $_POST["nurseSelection"];
+            $pat_trieuchungthuong = $_POST["trieuchungthuong"];
+            $pat_trieuchungnghiemtrong = $_POST["trieuchungnghiemtrong"];
+            $pat_phanvaophong = $_POST["phanvaophong"];
             $sqlPeople = "INSERT INTO benhnhan (MaBN, HoTen, SoCMND, SDT, DiaChi, Gioitinh, chuyendentu, thongtinxnbandau, Ma_Staff, Ngay_nhap_vien, Ngay_xuat_vien, Ma_Nurse) VALUES
             ('$num_rows', '$pat_lname', '$pat_socmnd', '$pat_phone',
             '$pat_address', '$pat_gender', '$pat_chuyendentu',
             '$pat_thongtin', '$pat_mastaff', '$pat_startDay',
             '$pat_endDay', '$pat_manurse');
             ";
+            $sqlTrieuchungthuong = "INSERT INTO trieuchungthuong (MaBN, ten_trieu_chung_thuong) VALUES ('$num_rows', '$pat_trieuchungthuong')";
             $resultInsertEmployee = $db->execute($sqlPeople);
+            $resultInsertTrieuchungthuong = $db->execute($sqlTrieuchungthuong);
+            $sqlStaffAddToRoom = "INSERT INTO staff_phanvao_phong (MaPhong, Ma_Staff, MaBN, Tinh_trang_hien_tai, vitri_BN) VALUES ('$pat_phanvaophong', '$pat_mastaff', '$num_rows','Đang theo dõi','$pat_phanvaophong')";
+            $resultStaffAddToRoom = $db->execute($sqlStaffAddToRoom);
+            if ($pat_trieuchungnghiemtrong != ""){
+                $sqlInsertTrieuchungnghiemtrong = "INSERT INTO trieuchungnghiemtrong (MaBN, ten_trieu_chung_nghiem_trong) VALUES ('$num_rows', '$pat_trieuchungnghiemtrong')";
+                $resultInsertTrieuchungnghiemtrong = $db->execute($sqlInsertTrieuchungnghiemtrong);
+            }
+            else{
+
+            }
+            // $sqlGetCurrentRange = "SELECT succhua FROM phom WHERE MaPhong = $pat_phanvaophong";
+            // $resultGetCurrentRange = $db->execute($sqlGetCurrentRange);
+            // $getRange = $resultGetCurrentRange - 1;
+            $sqlUpdateRoom = "UPDATE phong SET succhua = succhua - 1 where MaPhong = $pat_phanvaophong";
+            $resultUpdateRoom = $db->execute($sqlUpdateRoom);
             if ($resultInsertEmployee) {
                 echo '<script>window.location.href = "../Benhnhan.php";</script>';
             }else{

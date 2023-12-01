@@ -34,8 +34,8 @@ $db->connect();
             <div class="form-group">
                 <label for="gender">Giới tính</label>
                 <select name="gender" id="roleEmployee">
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
+                    <option value="1">Nam</option>
+                    <option value="2">Nữ</option>
                 </select>
             </div>
             <div class="form-group">

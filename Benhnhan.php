@@ -14,8 +14,8 @@
 
 <body>
     <?php
-    include ("./include/header.php");
-    include ("./mvc/Models/DBConfig.php");
+    include("./include/header.php");
+    include("./mvc/Models/DBConfig.php");
     $db = new Database;
     $db->connect();
     $sql = "SELECT bn.MaBN, bn.HoTen, bn.SoCMND, bn.SDT, bn.DiaChi, bn.Gioitinh, bn.chuyendentu, bn.thongtinxnbandau, bn.Ma_Staff, 
@@ -68,48 +68,151 @@
                     <th>Địa chỉ</th>
                     <th>Giới tính</th> <!--- thay đổi dATA --->
                     <!-- CĂT TỪ KHÚC NÀY -->
-                    <th>Chuyển đến từ</th>
-                    <th>Thông tin xét nghiệm ban đầu</th>
-                    <th>Mã Staff</th>
-                    <th>Ngày nhập viện</th>
-                    <th>Ngày xuất viện</th>
-                    <th>Mã Nurse</th>
                 </tr>
                 <?php
-                    if($result){
-                        while($row = $db->getData()){   
-                ?>
-                <tr class="data-table" data-href="./detail/detailPatient.php?id=<?= $row['MaBN'] ?>">
-                    <td><?php echo $row["MaBN"]; ?></td>
-                    <td><?php echo $row["HoTen"]; ?></td>
-                    <td><?php echo $row["SoCMND"]; ?></td>
-                    <td><?php echo $row["SDT"]; ?></td>
-                    <td><?php echo $row["DiaChi"]; ?></td>
-                    <td><?php echo $row["Gioitinh"]; ?></td>
-                    <td><?php echo $row["chuyendentu"]; ?></td>
-                    <td><?php echo $row["thongtinxnbandau"]; ?></td>
-                    <td><?php echo $row["Ma_Staff"]; ?></td>
-                    <td><?php echo $row["Ngay_nhap_vien"]; ?></td>
-                    <td><?php echo $row["Ngay_xuat_vien"]; ?></td>
-                    <td><?php echo $row["Ma_Nurse"]; ?></td>
-                </tr>
-                <?php
+                if (isset($_POST['search'])) {
+
+                } else {
+                    if ($result) {
+                        while ($row = $db->getData()) {
+                            ?>
+                            <tr class="data-table" data-href="./detail/detailPatient.php?id=<?= $row['MaBN'] ?>">
+                                <td>
+                                    <?php echo $row["MaBN"]; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row["HoTen"]; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row["SoCMND"]; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row["SDT"]; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row["DiaChi"]; ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    if ($row["Gioitinh"] == 1) {
+                                        echo "Nam";
+                                    } else {
+                                        echo "Nữ";
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php
                         }
                     }
+                }
                 ?>
-                
+
             </table>
         </div>
-        <div class="paging-show-data">
-            <div class="paging-data">
-                <ul class="page-list">
-                    <li class="page-detail">1</li>
-                    <li class="page-detail">2</li>
-                    <li class="page-detail">3</li>
-                    <li class="page-detail">4</li>
-                </ul>
-            </div>
-        </div>
+        <?php
+        if (isset($_POST['search'])) {
+            $searchTerm = $_POST['searchdata'];
+            $sqlSearch = "SELECT * FROM benhnhan WHERE HoTen LIKE '%$searchTerm%' OR SoCMND LIKE '%$searchTerm%'";
+            $resultSearch = $db->execute($sqlSearch);
+
+            if ($resultSearch) {
+                while ($row = $db->getData()) {
+                    ?>
+                    <tr class="data-table" data-href="./detail/detailPatient.php?id=<?= $row['MaBN'] ?>">
+                        <td>
+                            <?php echo $row["MaBN"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["HoTen"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["SoCMND"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["SDT"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["DiaChi"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Gioitinh"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["chuyendentu"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["thongtinxnbandau"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ma_Staff"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ngay_nhap_vien"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ngay_xuat_vien"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ma_Nurse"]; ?>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo "<p>Không có kết quả tìm kiếm.</p>";
+            }
+        } else {
+            if ($result) {
+                while ($row = $db->getData()) {
+                    ?>
+                    <tr class="data-table" data-href="./detail/detailPatient.php?id=<?= $row['MaBN'] ?>">
+                        <td>
+                            <?php echo $row["MaBN"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["HoTen"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["SoCMND"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["SDT"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["DiaChi"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Gioitinh"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["chuyendentu"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["thongtinxnbandau"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ma_Staff"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ngay_nhap_vien"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ngay_xuat_vien"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["Ma_Nurse"]; ?>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
+        }
+        ?>
+
+
+        </table>
+    </div>
     </div>
 
     <!-- ===== IONICONS ===== -->
